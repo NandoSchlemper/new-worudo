@@ -1,0 +1,3 @@
+local PlayerTemplateExample = {}
+
+return PlayerTemplateExample
