@@ -1,2 +1,3 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local _Hello = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Hello")
+local _Hello = require(ReplicatedStorage.Shared.Hello)
+_Hello.test()

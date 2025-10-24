@@ -1,6 +1,7 @@
-local HelloModule = {}
+local HelloModule: IHelloModule = {}
 function HelloModule.test()
 	print("Eu amo jogar video games")
 end
 
-return HelloModule
+type IHelloModule = typeof(HelloModule)
+return HelloModule :: IHelloModule
