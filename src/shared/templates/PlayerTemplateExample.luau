@@ -1,10 +1,13 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local att = require(ReplicatedStorage.Shared.templates.types.AttributesTemplateExample)
+
 local PlayerTemplateExample = {
 	Attributes = {
-		STR = 0,
-		DEX = 0,
-		INT = 0,
-		WIS = 0,
-		CON = 0,
+		[att.STR] = 0,
+		[att.DEX] = 0,
+		[att.INT] = 0,
+		[att.WIS] = 0,
+		[att.CON] = 0,
 	},
 	Equipped = 0,
 }
