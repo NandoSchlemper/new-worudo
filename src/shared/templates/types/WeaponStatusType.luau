@@ -7,5 +7,7 @@ local WeaponStatusTemplateExample = {
 	MaxGearScore = 5,
 	GearScore = 6,
 	Name = 7,
+	ComboThreshold = 8,
+	ID = 9,
 }
 return WeaponStatusTemplateExample

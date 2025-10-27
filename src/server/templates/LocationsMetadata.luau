@@ -1,0 +1,2 @@
+local LocationsMetadata = {}
+return LocationsMetadata
