@@ -1,11 +1,11 @@
 local plrs = game:GetService("Players")
-local rs = game:GetService("ReplicatedStorage")
-local weapon = rs:WaitForChild("BasicSword")
+local weapon = game:GetService("ReplicatedStorage"):WaitForChild("BasicSword")
 
 plrs.PlayerAdded:Connect(function(plr)
 	plr.CharacterAppearanceLoaded:Connect(function(char)
 		local right_arm = char:FindFirstChild("Right Arm")
 		local cloned_weapon = weapon:Clone()
+
 		cloned_weapon.Parent = char
 
 		local handle = cloned_weapon:FindFirstChild("Handle")
@@ -18,3 +18,5 @@ plrs.PlayerAdded:Connect(function(plr)
 		motor6d.Parent = handle
 	end)
 end)
+
+-- ID m1 = 127187018421888
