@@ -1,0 +1,2 @@
+local MobsMetadata = {}
+return MobsMetadata

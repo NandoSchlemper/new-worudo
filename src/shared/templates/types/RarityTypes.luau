@@ -1,9 +1,9 @@
 local RarityTemplateExample = {
-	COMMON = 0,
-	UNCOMMON = 1,
-	RARE = 2,
-	EPIC = 3,
-	LEGENDARY = 4,
-	ARTIFACT = 5,
+	COMMON = "Common",
+	UNCOMMON = "Uncommon",
+	RARE = "Rare",
+	EPIC = "Epic",
+	LEGENDARY = "Legendary",
+	ARTIFACT = "Artifact",
 }
 return RarityTemplateExample

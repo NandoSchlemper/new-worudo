@@ -1,8 +1,8 @@
 local AttributesTemplateExample = {
-	STR = 0,
-	DEX = 1,
-	INT = 2,
-	WIS = 3,
-	CON = 4,
+	STR = "STR",
+	DEX = "DEX",
+	INT = "INT",
+	WIS = "WIS",
+	CON = "CON",
 }
 return AttributesTemplateExample

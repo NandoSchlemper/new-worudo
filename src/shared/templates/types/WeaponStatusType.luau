@@ -1,13 +1,13 @@
 local WeaponStatusTemplateExample = {
-	BaseDamage = 0,
-	ThrustDamage = 1,
-	CriticalHitChance = 2,
-	CriticalHitDamage = 3,
-	MinGearScore = 4,
-	MaxGearScore = 5,
-	GearScore = 6,
-	Name = 7,
-	ComboThreshold = 8,
-	ID = 9,
+	BaseDamage = "Base Damage",
+	ThrustDamage = "Thrust Damage",
+	CriticalHitChance = "Critical Hit Chance",
+	CriticalHitDamage = "Critical Hit Damage",
+	MinGearScore = "Min Gear Score",
+	MaxGearScore = "Max Gear Score",
+	GearScore = "Gear Score",
+	Name = "Name",
+	ComboThreshold = "Combo Threshold",
+	ID = "Weapon ID",
 }
 return WeaponStatusTemplateExample

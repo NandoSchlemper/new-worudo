@@ -25,7 +25,7 @@ function CooldownModule:GetCooldown(plr: Player, name: string)
 	end
 	return self.Cooldowns[plr][name]
 end
-
+--// Update Recebe o parametro DeltaTime //--
 function CooldownModule:Update(dTime)
 	for _, cdTable in pairs(self.Cooldowns) do
 		for name, time in pairs(cdTable) do

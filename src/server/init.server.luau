@@ -1,7 +1,14 @@
 local plrs = game:GetService("Players")
+local CooldownModule = require(script.modules.CooldownModule)
+local HitboxModule = require(script.modules.HitboxModule)
 local weapon = game:GetService("ReplicatedStorage"):WaitForChild("BasicSword")
 
+local CooldownClass = CooldownModule.new()
+local HitboxClass = HitboxModule.new()
+
 plrs.PlayerAdded:Connect(function(plr)
+	CooldownClass:init(plr)
+	HitboxClass:init(plr)
 	plr.CharacterAppearanceLoaded:Connect(function(char)
 		local right_arm = char:FindFirstChild("Right Arm")
 		local cloned_weapon = weapon:Clone()
@@ -18,5 +25,10 @@ plrs.PlayerAdded:Connect(function(plr)
 		motor6d.Parent = handle
 	end)
 end)
+
+while true do
+	local dTime = wait(1)
+	CooldownClass:Update(dTime)
+end
 
 -- ID m1 = 127187018421888

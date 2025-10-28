@@ -1,9 +1,9 @@
 local WeaponTypeTemplateExample = {
-	SPEAR = 0,
-	BOW = 1,
-	WAND = 2,
-	STAFF = 3,
-	SWORD = 4,
-	GREATSWORD = 5,
+	SPEAR = "Spear",
+	BOW = "Bow",
+	WAND = "Wand",
+	STAFF = "Staff",
+	SWORD = "Sword",
+	GREATSWORD = "Greatsword",
 }
 return WeaponTypeTemplateExample
