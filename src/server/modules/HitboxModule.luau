@@ -7,7 +7,7 @@ function HitboxModule.new()
 	return self
 end
 
---||I'll make some FAKE player data, just 4 tests
+--||I'll make some FAKE player data, just 4 tests ||--
 function HitboxModule:init(plr: Player)
 	self.Hitboxes[plr] = {}
 end
