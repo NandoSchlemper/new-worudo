@@ -1,6 +1,5 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ServerScriptService = game:GetService("ServerScriptService")
-local WeaponFakeDataType = require(ServerScriptService.Server.templates.test.weaponsFakeDataTypes.WeaponFakeDataType)
+local wfdt = require(script.Parent.WeaponFakeDataType)
 local at = require(ReplicatedStorage.Shared.templates.types.AttributeTypes)
 local PlayerFakeData = {
 	level = 1,
@@ -11,6 +10,6 @@ local PlayerFakeData = {
 		[at.STR] = 10,
 		[at.WIS] = 20,
 	},
-	equippedWeapon = WeaponFakeDataType["Basic Kanata"],
+	equippedWeapon = wfdt["Basic Kanata"],
 }
 return PlayerFakeData
