@@ -11,6 +11,6 @@ local PlayerFakeData = {
 		[at.WIS] = 20,
 	},
 	equippedWeapon = wfdt.WeaponList["Basic Kanata"],
-	equippedStyle = wfdt.StyleList.Asura,
+	equippedStyle = wfdt.StyleList["Asura Katana"],
 }
 return PlayerFakeData
