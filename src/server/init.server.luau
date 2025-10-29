@@ -2,17 +2,23 @@ local plrs = game:GetService("Players")
 local WeaponModule = require(script.modules.WeaponModule)
 local PlayerFakeData = require(script.templates.test.PlayerFakeData)
 local weapon = game:GetService("ReplicatedStorage"):WaitForChild("BasicSword")
+local M1CombatEvent: RemoteEvent = game.ReplicatedStorage.Shared.events.M1CombatEvent
 
 local WeaponClass = WeaponModule.new()
 
-plrs.PlayerAdded:Connect(function(plr)
-	WeaponClass:init(plr, PlayerFakeData.equippedWeapon)
+M1CombatEvent.OnServerEvent:Connect(function(plr: Player)
+	print(plr.Name .. " utilizou o m1")
+	WeaponClass:M1(plr)
+end)
 
+plrs.PlayerAdded:Connect(function(plr)
 	plr.CharacterAppearanceLoaded:Connect(function(char)
+		WeaponClass:init(plr, PlayerFakeData.equippedWeapon)
 		local right_arm = char:FindFirstChild("Right Arm")
 		local cloned_weapon = weapon:Clone()
 
 		cloned_weapon.Parent = char
+		char:SetAttribute("canAttack", true)
 
 		local handle = cloned_weapon:FindFirstChild("Handle")
 		local cframevalue = cloned_weapon:FindFirstChild("Value")

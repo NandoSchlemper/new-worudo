@@ -15,6 +15,7 @@ function WeaponModule.new()
 end
 
 function WeaponModule:init(plr: Player, weapon: string)
+	local _char = plr.Character
 	local wdata = WeaponFakeData.Weapons[weapon]
 	if not wdata then
 		warn("Sem dados da arma.")
@@ -25,10 +26,29 @@ function WeaponModule:init(plr: Player, weapon: string)
 		self.Weapons[plr] = {}
 	end
 
+	--char:SetAttribute("canAttack", true)
+
 	self.Weapons[plr][weapon] = wdata
 	self.Components.Cooldown:init(plr)
 	self.Components.Hitbox:init(plr)
 	self.Components.Hitbox:SetHitbox(plr, "m1", wdata.hitbox.m1)
+end
+
+function WeaponModule:M1(plr: Player)
+	local character = plr.Character
+	if not character then
+		return
+	end
+
+	if not self.Components.Cooldown:GetCooldown(plr, "m1") then
+		self.Components.Cooldown:SetCooldown(plr, "m1", 1)
+		self.Components.Hitbox:ShowHitbox(plr, "m1")
+		--character:SetAttribute("canAttack", false)
+		print("Hitou")
+	elseif self.Components.Cooldown:GetCooldown(plr, "m1") then
+		warn("Em cooldown")
+		return
+	end
 end
 
 return WeaponModule

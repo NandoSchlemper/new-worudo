@@ -8,7 +8,9 @@ function CooldownModule.new()
 end
 
 function CooldownModule:init(plr: Player)
-	self.Cooldowns[plr] = {}
+	if not self.Cooldowns[plr] then
+		self.Cooldowns[plr] = {}
+	end
 end
 
 function CooldownModule:SetCooldown(plr: Player, name: string, time: number)
@@ -23,13 +25,23 @@ function CooldownModule:GetCooldown(plr: Player, name: string)
 		warn("Tabela de cooldowns do jogador ainda não foi criada.")
 		return
 	end
-	return self.Cooldowns[plr][name]
+
+	if not self.Cooldowns[plr][name] then
+		return false
+	end
+
+	return true
 end
+
 --// Update Recebe o parametro DeltaTime //--
 function CooldownModule:Update(dTime)
 	for _, cdTable in pairs(self.Cooldowns) do
 		for name, time in pairs(cdTable) do
-			cdTable[name] = math.max(0, time - dTime)
+			if time - dTime <= 0 then
+				cdTable[name] = nil
+			else
+				cdTable[name] = math.max(0, time - dTime)
+			end
 		end
 	end
 end

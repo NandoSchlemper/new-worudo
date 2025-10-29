@@ -7,6 +7,10 @@ function AnimationModule.new()
 	return self
 end
 
-function AnimationModule:Load() end
+function AnimationModule:init(plr: Player)
+	if not self.Animations[plr] then
+		self.Animations[plr] = {}
+	end
+end
 
 return AnimationModule
