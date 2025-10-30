@@ -1,4 +1,5 @@
 local ServerScriptService = game:GetService("ServerScriptService")
+local ComboModule = require(script.Parent.ComboModule)
 local CooldownModule = require(script.Parent.CooldownModule)
 local HitboxModule = require(script.Parent.HitboxModule)
 local WeaponFakeData = require(ServerScriptService.Server.templates.test.WeaponFakeData)
@@ -10,11 +11,12 @@ function WeaponModule.new()
 	self.Components = {}
 	self.Components.Hitbox = HitboxModule.new()
 	self.Components.Cooldown = CooldownModule.new()
+	self.Components.Combo = ComboModule.new()
 	self.Weapons = {}
 	return self
 end
 
-function WeaponModule:init(plr: Player, weapon: string)
+function WeaponModule:init(plr: Player, weapon: string, style: string)
 	local _char = plr.Character
 	local wdata = WeaponFakeData.Weapons[weapon]
 	if not wdata then
@@ -30,6 +32,8 @@ function WeaponModule:init(plr: Player, weapon: string)
 
 	self.Weapons[plr][weapon] = wdata
 	self.Components.Cooldown:init(plr)
+	self.Components.Combo:init(plr)
+	self.Components.Combo:LoadWeaponInfo(plr, style)
 	self.Components.Hitbox:init(plr)
 	self.Components.Hitbox:SetHitbox(plr, "m1", wdata.hitbox.m1)
 end
@@ -42,9 +46,9 @@ function WeaponModule:M1(plr: Player)
 
 	if not self.Components.Cooldown:GetCooldown(plr, "m1") then
 		self.Components.Cooldown:SetCooldown(plr, "m1", 1)
+		local currentCombo = self.Components.Combo:AddCombo(plr)
+		print("Player combo: " .. currentCombo)
 		self.Components.Hitbox:ShowHitbox(plr, "m1")
-		--character:SetAttribute("canAttack", false)
-		print("Hitou")
 	elseif self.Components.Cooldown:GetCooldown(plr, "m1") then
 		warn("Em cooldown")
 		return

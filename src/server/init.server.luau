@@ -13,7 +13,7 @@ end)
 
 plrs.PlayerAdded:Connect(function(plr)
 	plr.CharacterAppearanceLoaded:Connect(function(char)
-		WeaponClass:init(plr, PlayerFakeData.equippedWeapon)
+		WeaponClass:init(plr, PlayerFakeData.equippedWeapon, PlayerFakeData.equippedStyle)
 		local right_arm = char:FindFirstChild("Right Arm")
 		local cloned_weapon = weapon:Clone()
 
