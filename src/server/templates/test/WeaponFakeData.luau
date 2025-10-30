@@ -17,11 +17,6 @@ FakeData.Weapons = {
 
 FakeData.Styles = {
 	[wft.StyleList["Asura Katana"]] = {
-		skill_combos = {
-			ss1 = { "m1", "m1", "m1", "m2" },
-			ss2 = { "dash", "m1" },
-			ss3 = { "jump", "m1" },
-		},
 		animations = {
 			m1 = "",
 			m2 = "",
