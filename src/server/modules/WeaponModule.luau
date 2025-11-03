@@ -1,4 +1,5 @@
 local ServerScriptService = game:GetService("ServerScriptService")
+local AnimationModule = require(script.Parent.AnimationModule)
 local ComboModule = require(script.Parent.ComboModule)
 local CooldownModule = require(script.Parent.CooldownModule)
 local HitboxModule = require(script.Parent.HitboxModule)
@@ -12,6 +13,7 @@ function WeaponModule.new()
 	self.Components.Hitbox = HitboxModule.new()
 	self.Components.Cooldown = CooldownModule.new()
 	self.Components.Combo = ComboModule.new()
+	self.Components.Animation = AnimationModule.new()
 	self.Weapons = {}
 	return self
 end
@@ -33,9 +35,16 @@ function WeaponModule:init(plr: Player, weapon: string, style: string)
 	self.Weapons[plr][weapon] = wdata
 	self.Components.Cooldown:init(plr)
 	self.Components.Combo:init(plr)
-	self.Components.Combo:LoadWeaponInfo(plr, style)
 	self.Components.Hitbox:init(plr)
+	self.Components.Animation:init(plr)
+
+	self.Components.Combo:LoadWeaponInfo(plr, style)
+	self.Components.Animation:LoadAnimations(plr, style)
 	self.Components.Hitbox:SetHitbox(plr, "m1", wdata.hitbox.m1)
+end
+
+function WeaponModule:Idle(plr: Player)
+	self.Components.Animation:Play(plr, "idle_equipped")
 end
 
 function WeaponModule:M1(plr: Player)

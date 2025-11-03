@@ -2,7 +2,10 @@ local plrs = game:GetService("Players")
 local WeaponModule = require(script.modules.WeaponModule)
 local PlayerFakeData = require(script.templates.test.PlayerFakeData)
 local weapon = game:GetService("ReplicatedStorage"):WaitForChild("BasicSword")
-local M1CombatEvent: RemoteEvent = game.ReplicatedStorage.Shared.events.M1CombatEvent
+
+local em = require(script.utils.EventGather)
+
+local M1CombatEvent = em.waitEvent("M1CombatEvent")
 
 local WeaponClass = WeaponModule.new()
 
@@ -28,6 +31,7 @@ plrs.PlayerAdded:Connect(function(plr)
 		motor6d.Part1 = handle
 		motor6d.C1 = cframevalue.Value
 		motor6d.Parent = handle
+		WeaponClass:Idle(plr)
 	end)
 end)
 
